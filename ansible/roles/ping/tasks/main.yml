@@ -1,0 +1,11 @@
+---
+
+- include: check.yml check_item="{{ item }}"
+  with_items: "{{ servers }}"
+
+- name: report fully
+  template:
+    src: pingchecks.json
+    dest: "{{ role_path }}/json/pingchecks.json"
+
+

@@ -1,0 +1,1 @@
+{{ pingcheck_result|to_json }}

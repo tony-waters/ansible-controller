@@ -1,0 +1,9 @@
+{
+  "last-updated": "{{ '%s %s:%s'|format(ansible_date_time.date, ansible_date_time.hour, ansible_date_time.minute) }}",
+  "pingchecks": {
+    "localhost": [{% include 'roles/ping/json/ping-server1.json' %}],
+    "google": [{% include 'roles/ping/json/ping-server2.json' %}]
+  }
+}
+
+

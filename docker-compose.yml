@@ -1,0 +1,46 @@
+version: '2'
+
+services:
+
+  ansible_controller:
+    container_name: ansible_controller
+    build:
+      context: ansible/.
+      args:
+        - http_proxy
+        - https_proxy
+    volumes:
+      - app-data:/root/roles/ping/json
+
+  ansible_controller_dashboard:
+    container_name: ansible_controller_dashboard
+    image: nginx
+    ports:
+      - "80:80"
+    volumes:
+      - app-data:/usr/share/nginx/html/json
+
+  ansible_controller_jenkins:
+    container_name: ansible_controller_jenkins
+    build:
+      context: jenkins/.
+      args:
+        - http_proxy
+        - https_proxy
+    ports:
+      - 9999:8080
+      - 50000:50000
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+# uncomment next line if you want to keep jenkins data (effectively, all of jenkins) when the container has been deleted
+#      - jenkins-data:/var/jenkins_home
+    privileged: true
+
+
+volumes:
+  app-data:
+#    external: true
+
+  jenkins-data:
+
+

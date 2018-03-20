@@ -1,0 +1,19 @@
+---
+
+- name: "call ping check on {{ check_item.server }} (domain {{ check_item.domain }})"
+  ping:
+  register: pingcheck_result
+  ignore_errors: true
+
+- name: "show it as a message"
+  debug:
+    msg: "{{ check_item.server }}: {{ pingcheck_result }}"
+
+- name: report
+  template:
+    src: pingcheck.json
+    dest: "{{ role_path }}/json/ping-{{ check_item.server }}.json"
+  ignore_errors: true
+
+
+

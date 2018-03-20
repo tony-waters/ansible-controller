@@ -1,0 +1,5 @@
+---
+
+servers:
+    - { server: 'server1', domain: '127.0.0.1' }
+    - { server: 'server2', domain: 'google.com' }

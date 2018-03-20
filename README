@@ -1,0 +1,5 @@
+Ansible Controller
+
+Run Ansible jobs using Jenkins and Docker.
+
+Includes Nginx for viewing output.
